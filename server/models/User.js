@@ -2,6 +2,11 @@ import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema(
     {
+        id: {
+            type: Number,
+            autoincrement: true,
+            unique: true,
+        },
         firstNamme: {
             type: String,
             required: true,

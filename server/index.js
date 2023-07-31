@@ -9,7 +9,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { error } from 'console';
+import {register} from "./controllers/authorization.js";
+import authorizationRoutes "./routes/authorization.js";
 
 /**
  *  Configurations
@@ -56,6 +57,12 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+/**
+ * Routes
+ */
+app.post("/authorization/register", upload.single("picture"), register);
+app.use("/authorization", authorizationRoutes);
 
 /**
  * Mongoose setup
