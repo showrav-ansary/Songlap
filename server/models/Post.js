@@ -1,24 +1,35 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const PostSchema = new mongoose.Schema(
+const postSchema = mongoose.Schema(
     {
-        id: {
-            type: Number,
-            autoincrement: true,
-            unique: true,
-        },
-        body: {
+        userId: {
             type: String,
             required: true,
-        },originalPoster:{
-            type: Number,
         },
-        orphaned: Boolean,
-        parentNode: Array,
-        childNode: Array,
+        firstName: {
+            type: String,
+            required: false,
+        },
+        lastName: {
+            type: String,
+            required: false,
+        },
+        location: String,
+        description: String,
+        picturePath: String,
+        userPicturePath: String,
+        likes: {
+            type: Map,
+            of: Boolean,
+        },
+        comments: {
+            type: Array,
+            default: [],
+        },
     },
     { timestamps: true }
 );
 
-const Post = mongoose.model('Post', PostSchema);
+const Post = mongoose.model("Post", postSchema);
+
 export default Post;

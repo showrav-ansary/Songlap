@@ -1,48 +1,45 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
     {
-        id: {
-            type: Number,
-            autoincrement: true,
-            unique: true,
-        },
-        firstNamme: {
+        firstName: {
             type: String,
             required: true,
             min: 2,
-            max: 30,
+            max: 50,
         },
-        lastNamme: {
+        lastName: {
             type: String,
             required: true,
             min: 2,
-            max: 30,
+            max: 50,
         },
         email: {
             type: String,
             required: true,
-            unique: true,
             max: 50,
+            unique: true,
         },
         password: {
             type: String,
             required: true,
-            min: 8,
+            min: 5,
         },
         picturePath: {
             type: String,
-            default: '',
+            default: "",
         },
         friends: {
             type: Array,
             default: [],
         },
         location: String,
-        impression: Number,
+        occupation: String,
+        viewedProfile: Number,
+        impressions: Number,
     },
     { timestamps: true }
 );
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
 export default User;
