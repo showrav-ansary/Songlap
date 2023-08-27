@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import { OrganizationSwitcher, SignedIn, SignOutButton } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
-import { OrganizationSwitcher, SignOutButton, SignedIn } from '@clerk/nextjs';
+import Image from 'next/image';
+import Link from 'next/link';
+
 function Topbar() {
 	return (
 		<nav className="topbar">
@@ -9,15 +10,16 @@ function Topbar() {
 				href="/"
 				className="flex items-center gap-4">
 				<Image
-					src="/assets/logo.png"
-					width={50}
-					height={30}
+					src="/logo.svg"
 					alt="logo"
+					width={28}
+					height={28}
 				/>
 				<p className="text-heading3-bold text-light-1 max-xs:hidden">
 					BRACU সংলাপ
 				</p>
 			</Link>
+
 			<div className="flex items-center gap-1">
 				<div className="block md:hidden">
 					<SignedIn>
@@ -27,11 +29,13 @@ function Topbar() {
 									src="/assets/logout.svg"
 									alt="logout"
 									width={24}
-									height={24}></Image>
+									height={24}
+								/>
 							</div>
 						</SignOutButton>
 					</SignedIn>
 				</div>
+
 				<OrganizationSwitcher
 					appearance={{
 						baseTheme: dark,
